@@ -11,6 +11,9 @@ ST0263 Tópicos especiales en telemática
 ## Nombre del Proyecto
 **# Reto 1:Arquitectura P2P y Comunicación entre procesos mediante API REST, RPC y MOM**
 
+## Descripción de la actividad
+El proyecto consiste en la implementación de una red P2P (peer-to-peer) diseñada para permitir la distribución descentralizada de archivos entre nodos. En esta red, cada nodo opera tanto como cliente como servidor, facilitando la solicitud y transferencia de archivos de manera directa entre los participantes de la red. 
+
 ## Objetivos Logrados en el Proyecto
 - Se creó y desplegó con éxito un sistema distribuido para la gestión de archivos utilizando **gRPC** y **API REST**.
 - Se implementó la comunicación entre nodos utilizando **gRPC** y se configuró el servidor **API REST** para la interacción con los usuarios.
