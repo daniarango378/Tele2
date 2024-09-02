@@ -205,6 +205,8 @@ En cada nodo corre lo siguiente para inicializar los nodos:
 
 ## Documentación de actividades
 
+Las actividades planteadas en el enunciado del reto estan en la wiki.
+
 
 
 
