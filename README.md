@@ -75,21 +75,21 @@ En cada instancia EC2, sigue estos pasos para clonar el repositorio:
 - **Clona el repositorio**:
    - Usa el siguiente comando para clonar el repositorio:
      ```bash
-     git clone ...
+     git clone https://github.com/daniarango378/daniarango378-st0263.git
      ```
 
 - **Navega al directorio clonado**:
    - Accede al directorio del repositorio clonado con:
      ```bash
-     cd Tele2
+     cd daniarango378-st0263
      ```
 - **Entra al directorio del proyecto**:
-   - Accede al directorio del repositorio clonado con:
+   - Accede al directorio del proyecto::
      ```bash
      cd Tele2
      ```
      - **Entra al nodo en que vas a trabajar**:
-   - Accede al directorio del repositorio clonado con:
+   - Accede al directorio del Nodo:
      ```bash
      cd Nodo1 
      ```
