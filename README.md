@@ -206,7 +206,7 @@ En cada nodo corre lo siguiente para inicializar los nodos:
    - **Respuesta Esperada**: El archivo será descargado si está disponible en el nodo actual.
 
 ## Video
-
+https://www.youtube.com/watch?v=Z2JMW1QAOxI
 ## Documentación de actividades
 
 Las actividades planteadas en el enunciado del reto estan en la wiki.
