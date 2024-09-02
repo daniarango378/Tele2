@@ -62,7 +62,7 @@ ST0263 Tópicos especiales en telemática
 3. **Conectar a las Instancias EC2**:
    - Una vez que las instancias estén en funcionamiento, puedes conectarte a ellas utilizando SSH o el método que hayas configurado.
 
-4. **Clonar el Repositorio**
+   ##Clonar el Repositorio
 
 En cada instancia EC2, sigue estos pasos para clonar el repositorio:
 
@@ -93,6 +93,117 @@ En cada instancia EC2, sigue estos pasos para clonar el repositorio:
      ```bash
      cd Nodo1 
      ```
+ ## Instalar Python y Librerías
+
+ En cada instancia siga los siguientes pasos para instalar python
+
+- **Instalar Python 3**:
+   - En **Ubuntu**:
+     ```bash
+     sudo apt-get update
+     sudo apt-get install -y python3 python3-pip
+     ```
+ - **Instalar pip** (si no está instalado automáticamente):
+   - En **Ubuntu**:
+     ```bash
+     sudo apt-get install -y python3-pip
+     ```
+
+- **Instalar las librerías necesarias**:
+   - Asegúrate de estar en el directorio del proyecto del nodo.
+  
+   - Instala las librerías usando pip:
+     ```bash
+     pip3 install -r requirements.txt
+     ```
+## Crear Archivos .env
+
+Para cada nodo, sigue estos pasos para crear el archivo `.env` en el directorio del proyecto:
+
+1. **Crea el archivo `.env` en cada instancia**:
+   - Ejecuta el siguiente comando:
+     ```bash
+     nano .env
+     ```
+
+2. **Añade el siguiente contenido al archivo `.env`**, ajustando los valores según sea necesario para cada nodo. 
+En el nodo1 se pone la ip del Nodo2 en "NEXT_NODE_IP=", en el Nodo2 la del tres y así sucesivamente
+En "LOCAL_IP=" se pone la ip del nodo que se tiene abierto
+
+   ```plaintext
+   GRPC_PORT=50057
+   REST_PORT=8080
+   NEXT_NODE_IP=127.0.0.1
+   NEXT_NODE_PORT=50057
+   LOCAL_IP=127.0.0.1
+   ```
+3. **Guarda y cierra el archivo** (Ctrl+X, luego Y para confirmar y Enter para guardar).
+
+## Ejecutar el Código
+
+En cada nodo corre lo siguiente para inicializar los nodos:
+ ```
+ python3 node.py
+ ```
+
+## Funcionalidades
+
+1. **Listar Archivos**
+   - **Descripción**: Obtiene una lista de todos los archivos disponibles en el nodo actual y en los nodos siguientes en la cadena.
+   - **URL**: `http://<LOCAL_IP>:<REST_PORT>/list-files`
+   - **Método**: GET
+   - **Cómo usar en el navegador**:
+     - Abre tu navegador y visita la siguiente URL:
+       ```plaintext
+       http://127.0.0.1:8080/list-files
+       ```
+       -Reemplaza "127.0.0.1" por la ip del nodo por el que deseas iniciar la busqueda
+   - **Respuesta Esperada**:
+     ```json
+     {
+       "files": ["file1.txt", "file2.jpg"]
+     }
+     ```
+
+2. **Subir Archivos**
+   - **Descripción**: Permite subir un archivo al nodo actual.
+   - **URL**: `http://<LOCAL_IP>:<REST_PORT>/upload`
+   - **Método**: POST
+   - **Tipo de Contenido**: multipart/form-data
+   - **Cómo usar en el navegador**:
+     - No puedes usar el navegador directamente para enviar archivos mediante multipart/form-data. En su lugar, usa una herramienta como Postman para hacer una solicitud POST con el archivo adjunto.
+
+3. **Buscar Archivos**
+   - **Descripción**: Busca un archivo en los nodos de la red. Si el archivo está en el nodo actual, devuelve la URL para la descarga.
+   - **URL**: `http://<LOCAL_IP>:<REST_PORT>/search?filename=<FILENAME>`
+   - **Método**: GET
+   - **Cómo usar en el navegador**:
+     - Abre tu navegador y visita la siguiente URL, reemplazando `<FILENAME>` con el nombre del archivo que deseas buscar:
+       ```plaintext
+       http://127.0.0.1:8080/search?filename=example.txt
+       ```
+   - **Respuesta Esperada**:
+     ```json
+     {
+       "filename": "example.txt",
+       "download_url": "http://127.0.0.1:8080/download?filename=example.txt"
+     }
+     ```
+
+4. **Descargar Archivos**
+   - **Descripción**: Permite descargar un archivo disponible en el nodo actual.
+   - **URL**: `http://<LOCAL_IP>:<REST_PORT>/download?filename=<FILENAME>`
+   - **Método**: GET
+   - **Cómo usar en el navegador**:
+     - Abre tu navegador y visita la siguiente URL, reemplazando `<FILENAME>` con el nombre del archivo que deseas descargar:
+       ```plaintext
+       http://127.0.0.1:8080/download?filename=example.txt
+       ```
+   - **Respuesta Esperada**: El archivo será descargado si está disponible en el nodo actual.
+
+## Video
+
+## Documentación de actividades
 
 
 
