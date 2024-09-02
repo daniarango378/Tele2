@@ -20,7 +20,7 @@ El proyecto consiste en la implementación de una red P2P (peer-to-peer) diseña
 - El proyecto fue subido a **AWS** para realizar pruebas en un entorno de nube, facilitando la validación del sistema en condiciones reales.
 
 ## Objetivos No Logrados
-- Implementar **MOM**
+- Implementar **MOM** (debido a que no se ajustaba a la architectura y funcionalidad del proyecto)
 
 ## Instrucciones para Configuración y Creación del Proyecto
 
