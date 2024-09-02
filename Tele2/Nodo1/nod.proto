@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package nod;
+
+// The request message containing the filename and origin node.
+message FileRequest {
+    string filename = 1;
+    string origin_node = 2;
+}
+
+// The response message containing the file location or an error.
+message FileResponse {
+    string content = 1;  // Content of the file (optional, not used in the current code).
+    bool found = 2;      // Whether the file was found or not.
+    string location = 3; // Location of the node where the file was found.
+}
+
+// The request message for listing files.
+message ListFilesRequest {
+    string origin_node = 1;
+}
+
+// The response message containing the list of files.
+message ListFilesResponse {
+    repeated string files = 1;  // List of filenames.
+}
+
+// The gRPC service definition.
+service NodeService {
+    // Request a file from the node.
+    rpc RequestFile(FileRequest) returns (FileResponse);
+
+    // Request the list of all files from the node.
+    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+}
