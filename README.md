@@ -1,105 +1,99 @@
-Información de la materia
+
+## Información de la materia
 ST0263 Tópicos especiales en telemática
-ST0263 Tópicos especiales en telemática
-Integrantes del Equipo
-Jorge A. Villarreal
-Daniel Gonzalez Bernal
-Martin Villegas
-Profesor
-Edwin Nelson Montoya Munera, emontoya@eafit.edu.co
-Nombre del Proyecto
-Reto 4 Tópicos Especiales en Telemática
 
-Objetivos Logrados en el Proyecto
-Se creó y desplegó con éxito un sistema distribuido para la gestión de archivos utilizando gRPC y REST.
-Se implementó la comunicación entre nodos utilizando gRPC y se configuró el servidor REST para la interacción con los usuarios.
-Se subió el proyecto a AWS para realizar pruebas en un entorno de nube, facilitando la validación del sistema en condiciones reales.
-Objetivos No Logrados
-Todo el proyecto se logró según los objetivos establecidos.
-Instrucciones para Configuración y Creación del Proyecto
-Antes de Comenzar
-Crear una Cuenta en AWS: Si eres nuevo en AWS, crea una cuenta para poder utilizar los servicios de la nube. Puedes obtener un crédito gratuito inicial para probar los servicios.
+## Integrantes del Equipo
+- **Daniela Arango Gutierrez**
 
-Configurar AWS CLI: Asegúrate de tener AWS CLI configurado en tu entorno.
+## Profesor
+**Alvaro Enrique Ospina Sanjuan**  
 
-bash
-Copiar código
-aws configure
-Configuración del Entorno Local
-Clonar el Repositorio:
+## Nombre del Proyecto
+**# Reto 1:Arquitectura P2P y Comunicación entre procesos mediante API REST, RPC y MOM**
 
-bash
-Copiar código
-git clone https://github.com/tu-usuario/proyecto-distribucion-archivos.git
-cd proyecto-distribucion-archivos
-Instalar las Dependencias:
+## Objetivos Logrados en el Proyecto
+- Se creó y desplegó con éxito un sistema distribuido para la gestión de archivos utilizando **gRPC** y **API REST**.
+- Se implementó la comunicación entre nodos utilizando **gRPC** y se configuró el servidor **API REST** para la interacción con los usuarios.
+- El proyecto fue subido a **AWS** para realizar pruebas en un entorno de nube, facilitando la validación del sistema en condiciones reales.
 
-bash
-Copiar código
-pip install -r requirements.txt
-Configurar las Variables de Entorno:
+## Objetivos No Logrados
+- Implementar **MOM**
 
-Crea un archivo .env en la raíz del proyecto y define las variables necesarias. Un ejemplo de archivo .env podría verse así:
+## Instrucciones para Configuración y Creación del Proyecto
 
-env
-Copiar código
-GRPC_SERVER_PORT=50051
-REST_SERVER_PORT=8080
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
-Despliegue en AWS
-Configurar AWS CLI:
+## Antes de Comenzar
 
-Asegúrate de que tienes configuradas las credenciales de AWS en tu entorno.
+1. **Crear una Cuenta en AWS**:
+   - Si eres nuevo en AWS, [crea una cuenta en AWS](https://aws.amazon.com/) para poder utilizar los servicios en la nube. 
 
-bash
-Copiar código
-aws configure
-Crear y Configurar Recursos en AWS:
+## Configuración de Instancias EC2
 
-Crear una Instancia EC2 para el Servidor:
+1. **Iniciar Sesión en la Consola de AWS**:
+   - Ve a la [Consola de administración de AWS](https://aws.amazon.com/console/) e inicia sesión con tu cuenta.
 
-Utiliza la consola de AWS o CLI para crear una instancia EC2 y configurar la red y el almacenamiento necesarios.
+2. **Crear Instancias EC2**:
+   - **Acceder al Servicio EC2**:
+     En la consola de AWS, busca "EC2" en el menú de servicios y haz clic en "Instancias".
 
-Desplegar el Proyecto:
+   - **Lanzar Instancias**:
+     Haz clic en "Launch Instance" para crear una nueva instancia.
 
-Sigue las instrucciones específicas para desplegar el código en la instancia EC2.
+   - **Seleccionar una Imagen de Máquina de Amazon (AMI)**:
+     Elige una AMI adecuada, como "Ubuntu Server 20.04 LTS".
 
-Probar el Proyecto en AWS:
+   - **Elegir un Tipo de Instancia**:
+     Selecciona un tipo de instancia según tus necesidades. Para pruebas, una instancia `t2.micro` (con el nivel gratuito) puede ser suficiente.
 
-Realiza pruebas para asegurarte de que el sistema funciona correctamente en el entorno de nube.
+   - **Configurar Detalles de la Instancia**:
+     - Configura la red y las subredes según tus requisitos. Asegúrate de que todas las instancias estén en la misma red para facilitar la comunicación entre ellas.
 
-Estructura del Proyecto
-grpc_server.py: Implementación del servidor gRPC para la comunicación entre nodos.
-rest_server.py: Implementación del servidor REST para la interacción con usuarios y otros sistemas.
-.env: Archivo de configuración con las variables de entorno necesarias.
-nod.proto: Archivo de definiciones para gRPC, utilizado para generar nod_pb2.py y nod_pb2_grpc.py.
-Dependencias del Proyecto
-Este proyecto utiliza varias librerías para manejar diferentes aspectos de la funcionalidad:
+   - **Agregar Almacenamiento**:
+     Puedes usar el almacenamiento predeterminado o agregar almacenamiento adicional si es necesario.
 
-asyncio
-Descripción: Facilita la programación asíncrona, permitiendo la ejecución de corutinas y tareas de forma no bloqueante.
-Uso: Maneja operaciones de I/O como solicitudes de red de manera eficiente.
-aiohttp (submódulo web)
-Descripción: Permite manejar solicitudes HTTP de forma asíncrona y construir servidores web.
-Uso: Implementación del servidor REST para exponer las APIs del proyecto.
-threading (submódulo Thread)
-Descripción: Proporciona la clase Thread para la ejecución concurrente de código mediante hilos.
-Uso: Ejecuta el servidor gRPC en paralelo con el servidor REST.
-concurrent.futures
-Descripción: Proporciona una interfaz para ejecutar tareas de forma asíncrona usando un pool de hilos o procesos.
-Uso: Maneja operaciones concurrentes para mejorar el rendimiento del sistema.
-grpc
-Descripción: Implementa servicios de comunicación remota utilizando RPC de alto rendimiento.
-Uso: Implementación del servidor y cliente gRPC para la transferencia de archivos entre nodos.
-nod_pb2 y nod_pb2_grpc
-Descripción: Archivos generados por protoc que definen los mensajes y servicios gRPC.
-Uso: Implementación de los mensajes y servicios definidos en nod.proto.
-os
-Descripción: Permite interactuar con el sistema operativo.
-Uso: Manipulación de rutas de archivos y gestión de variables de entorno.
-dotenv (submódulo load_dotenv)
-Descripción: Facilita la carga de variables de entorno desde un archivo .env.
-Uso: Carga de configuraciones clave sin tener que hardcodearlas en el código fuente.
-Contribuciones
-Las contribuciones son bienvenidas. Por favor, sigue las buenas prácticas de desarrollo y documenta adecuadamente cualquier cambio.
+   - **Configurar el Grupo de Seguridad**:
+     Crea un nuevo grupo de seguridad o selecciona uno existente. Asegúrate de permitir el tráfico de entrada en los puertos que tu aplicación necesita ( TCP 50051 para gRPC, TCP 8080 para HTTP).
+
+   - **Revisar y Lanzar**:
+     Revisa todas las configuraciones y haz clic en "Launch". Selecciona un par de claves existente o crea uno nuevo para acceder a las instancias.
+
+   - **Repetir el Proceso**:
+     Repite los pasos a-g para crear dos instancias adicionales, asegurándote de que todas las instancias estén en la misma red y grupo de seguridad.
+
+3. **Conectar a las Instancias EC2**:
+   - Una vez que las instancias estén en funcionamiento, puedes conectarte a ellas utilizando SSH o el método que hayas configurado.
+
+4. **Clonar el Repositorio**
+
+En cada instancia EC2, sigue estos pasos para clonar el repositorio:
+
+- **Asegúrate de tener Git instalado**:
+   - Para **Ubuntu**, instala Git con:
+     ```bash
+     sudo apt-get install git
+     ```
+
+- **Clona el repositorio**:
+   - Usa el siguiente comando para clonar el repositorio:
+     ```bash
+     git clone ...
+     ```
+
+- **Navega al directorio clonado**:
+   - Accede al directorio del repositorio clonado con:
+     ```bash
+     cd Tele2
+     ```
+- **Entra al directorio del proyecto**:
+   - Accede al directorio del repositorio clonado con:
+     ```bash
+     cd Tele2
+     ```
+     - **Entra al nodo en que vas a trabajar**:
+   - Accede al directorio del repositorio clonado con:
+     ```bash
+     cd Nodo1 
+     ```
+
+
+
+
