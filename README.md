@@ -6,7 +6,7 @@ ST0263 Tópicos especiales en telemática
 - **Daniela Arango Gutierrez**
 
 ## Profesor
-**Alvaro Enrique Ospina Sanjuan**  
+**Alvaro Enrique Ospina Sanjuan**  aeospinas@eafit.brightspace.com
 
 ## Nombre del Proyecto
 **# Reto 1:Arquitectura P2P y Comunicación entre procesos mediante API REST, RPC y MOM**
